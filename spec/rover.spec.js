@@ -25,8 +25,8 @@ describe("Rover class", function () {
     let message = new Message("Test message with two commands", commands);
     let rover = new Rover(98382); // Passes 98382 as the rover's position.
     let response = rover.receiveMessage(message);
-
-    expect(response).toBe(message.name);
+    
+    expect(response.name).toBe(message.name);
   });
 
   // Test 9

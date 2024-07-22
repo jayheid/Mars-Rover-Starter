@@ -6,7 +6,10 @@ class Rover {
    }
 
    receiveMessage(message){
-      return message.name;
+      let resultObject = {
+         name : message.name
+      }
+      return resultObject;
    }
    
 }
