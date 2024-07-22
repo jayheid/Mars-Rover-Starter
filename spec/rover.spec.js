@@ -11,8 +11,16 @@ describe("Rover class", function() {
   // 7 tests here!
 
   // Test 7
+  it("constructor sets position and default values for mode and generatorWatts", function () {
+    let newRover = new Rover(98382);
+    expect(newRover.position).toEqual(98382);
+    expect(newRover.mode).toBe('NORMAL');
+    expect(newRover.generatorWatts).toEqual(110);
+  });
 
   // Test 8
+  
+
 
   // Test 9
 
