@@ -10,4 +10,20 @@ describe("Rover class", function() {
 
   // 7 tests here!
 
+  // Test 7
+
+  // Test 8
+
+  // Test 9
+
+  // Test 10
+
+  // Test 11
+
+  // Test 12
+
+  // Test 13
+  
+  
+
 });
