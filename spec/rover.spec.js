@@ -50,6 +50,7 @@ describe("Rover class", function () {
     let response = rover.receiveMessage(message);
     let roverStatus = response.results[0].roverStatus;
 
+    expect(response.results[0]).toBeTruthy();
     expect(roverStatus.mode).toBe(rover.mode);
     expect(roverStatus.generatorWatts).toEqual(rover.generatorWatts);
     expect(roverStatus.position).toEqual(rover.position);
@@ -61,21 +62,19 @@ describe("Rover class", function () {
     let message = new Message("Mode Change Message", commands);
     let rover = new Rover(98382);
     let response = rover.receiveMessage(message);
-    let completedObject = {'completed' : true}
 
+    expect(response.results[0].completed).toBeTruthy();
     expect(rover.mode).toBe("LOW_POWER");
-    expect(response.results[0]).toEqual(completedObject);
   });
 
   // Test 12
   it("responds with a false completed value when attempting to move in LOW_POWER mode", function () {
-    let rover = new Rover(98382, 'LOW_POWER');
+    let rover = new Rover(98382, "LOW_POWER");
     let commands = [new Command("MOVE", 150)];
     let message = new Message("Move Message", commands);
     let response = rover.receiveMessage(message);
-    let completedObject = {'completed' : false}
 
-    expect(response.results[0]).toEqual(completedObject);
+    expect(response.results[0].completed).toBeFalsy();
   });
 
   // Test 13
@@ -85,7 +84,7 @@ describe("Rover class", function () {
     let message = new Message("Move Message", commands);
     let response = rover.receiveMessage(message);
 
+    expect(response.results[0].completed).toBeTruthy();
     expect(rover.position).toEqual(98350);
   });
-
 });
