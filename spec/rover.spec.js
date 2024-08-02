@@ -6,7 +6,6 @@ const Command = require("../command.js");
 //       However, do NOT edit the grading tests for any reason and make sure to un-comment out your code to get the autograder to pass.
 
 describe("Rover class", function () {
-
   it("constructor sets position and default values for mode and generatorWatts", function () {
     let newRover = new Rover(98382);
     expect(newRover.position).toEqual(98382);
@@ -20,7 +19,7 @@ describe("Rover class", function () {
       new Command("STATUS_CHECK"),
     ];
     let message = new Message("Test message with two commands", commands);
-    let rover = new Rover(98382); 
+    let rover = new Rover(98382);
     let response = rover.receiveMessage(message);
 
     expect(response.message).toBe(message.name);
@@ -32,7 +31,7 @@ describe("Rover class", function () {
       new Command("STATUS_CHECK"),
     ];
     let message = new Message("Test message with two commands", commands);
-    let rover = new Rover(98382); 
+    let rover = new Rover(98382);
     let response = rover.receiveMessage(message);
 
     expect(response.results.length).toEqual(commands.length);
@@ -45,7 +44,7 @@ describe("Rover class", function () {
     let response = rover.receiveMessage(message);
     let roverStatus = response.results[0].roverStatus;
 
-    expect(response.results[0]).toBeTruthy();
+    expect(response.results[0].completed).toBeTruthy();
     expect(roverStatus.mode).toBe(rover.mode);
     expect(roverStatus.generatorWatts).toEqual(rover.generatorWatts);
     expect(roverStatus.position).toEqual(rover.position);
@@ -68,6 +67,7 @@ describe("Rover class", function () {
     let response = rover.receiveMessage(message);
 
     expect(response.results[0].completed).toBeFalsy();
+    expect(rover.position).toEqual(98382);
   });
 
   it("responds with the position for the move command", function () {
